@@ -3,26 +3,26 @@
 
    <!-- If you remove this field, you must _also_ disable the update log in solrconfig.xml
       or Solr won't start. _version_ and update log are required for SolrCloud
-   --> 
+   -->
    <field name="_version_" type="long" indexed="true" stored="true"/>
-   
+
    <!-- points to the root document of a block of nested documents. Required for nested
       document support, may be removed otherwise
    -->
    <field name="_root_" type="string" indexed="true" stored="false"/>
 
    <!-- Only remove the "id" field if you have a very good reason to. While not strictly
-     required, it is highly recommended. A <uniqueKey> is present in almost all Solr 
+     required, it is highly recommended. A <uniqueKey> is present in almost all Solr
      installations. See the <uniqueKey> declaration below where <uniqueKey> is set to "id".
-   -->   
-   <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
-   
-    <!-- Field to use to determine and enforce document uniqueness. 
+   -->
+   <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+
+    <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
    -->
  <uniqueKey>id</uniqueKey>
- 
- 
+
+
     <!-- The StrField type is not analyzed, but indexed/stored verbatim.
        It supports doc values but in that case the field needs to be
        single-valued and either required or have a default value.
@@ -31,7 +31,7 @@
 
     <!-- boolean type: "true" or "false" -->
     <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
- 
+
     <fieldType name="int" class="solr.TrieIntField" precisionStep="0" positionIncrementGap="0"/>
     <fieldType name="float" class="solr.TrieFloatField" precisionStep="0" positionIncrementGap="0"/>
     <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
@@ -42,14 +42,14 @@
     <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="8" positionIncrementGap="0"/>
     <fieldType name="tlong" class="solr.TrieLongField" precisionStep="8" positionIncrementGap="0"/>
     <fieldType name="tdouble" class="solr.TrieDoubleField" precisionStep="8" positionIncrementGap="0"/>
-    
-    
+
+
        <!-- Dynamic field definitions allow using convention over configuration
-       for fields via the specification of patterns to match field names. 
+       for fields via the specification of patterns to match field names.
        EXAMPLE:  name="*_i" will match any field ending in _i (like myid_i, z_i)
        RESTRICTION: the glob-like pattern in the name attribute must have
        a "*" only at the start or the end.  -->
-   
+
    <dynamicField name="*_i"  type="int"    indexed="true"  stored="true"/>
    <dynamicField name="*_is" type="int"    indexed="true"  stored="true"  multiValued="true"/>
    <dynamicField name="*_s"  type="string"  indexed="true"  stored="true" />
@@ -83,10 +83,10 @@
    <dynamicField name="attr_*" type="text_general" indexed="true" stored="true" multiValued="true"/>
 
    <dynamicField name="random_*" type="random" />
-    
+
         <!-- The format for this date field is of the form 1995-12-31T23:59:59Z, and
          is a more restricted form of the canonical representation of dateTime
-         http://www.w3.org/TR/xmlschema-2/#dateTime    
+         http://www.w3.org/TR/xmlschema-2/#dateTime
          The trailing "Z" designates UTC time and is mandatory.
          Optional fractional seconds are allowed: 1995-12-31T23:59:59.999Z
          All other components are mandatory.
@@ -101,7 +101,7 @@
                NOW/DAY+6MONTHS+3DAYS
                   ... 6 months and 3 days in the future from the start of
                       the current day
-                      
+
          Consult the DateField javadocs for more information.
 
          Note: For faster range queries, consider the tdate type
@@ -110,24 +110,24 @@
 
     <!-- A Trie based date field for faster date range queries and date faceting. -->
     <fieldType name="tdate" class="solr.TrieDateField" precisionStep="6" positionIncrementGap="0"/>
-    
-    
+
+
     <!--Binary data type. The data should be sent/retrieved in as Base64 encoded Strings -->
     <fieldtype name="binary" class="solr.BinaryField"/>
-    
+
         <!-- The "RandomSortField" is not used to store or search any
          data.  You can declare fields of this type it in your schema
-         to generate pseudo-random orderings of your docs for sorting 
+         to generate pseudo-random orderings of your docs for sorting
          or function purposes.  The ordering is generated based on the field
          name and the version of the index. As long as the index version
          remains unchanged, and the same field name is reused,
-         the ordering of the docs will be consistent.  
+         the ordering of the docs will be consistent.
          If you want different psuedo-random orderings of documents,
          for the same version of the index, use a dynamicField and
          change the field name in the request.
      -->
     <fieldType name="random" class="solr.RandomSortField" indexed="true" />
-    
+
     <!-- A text field that only splits on whitespace for exact matching of words -->
     <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
@@ -248,7 +248,7 @@
         <filter class="solr.PorterStemFilterFactory"/>
       </analyzer>
     </fieldType>
-    
+
     <!-- ************************************************************************** -->
     <!-- The field created to handle the body of the video. It adds the HTMLStripTransformer to text_en_splitting
 	A text field with defaults appropriate for English, plus
@@ -290,7 +290,7 @@
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
         <filter class="solr.PorterStemFilterFactory"/>
       </analyzer>
-    </fieldType>    
+    </fieldType>
     <!-- Less flexible matching, but less false matches.  Probably not ideal for product names,
          but may be good for SKUs.  Can insert dashes in the wrong place and still match. -->
     <fieldType name="text_en_splitting_tight" class="solr.TextField" positionIncrementGap="100" autoGeneratePhraseQueries="true">
@@ -342,13 +342,13 @@
         <filter class="solr.TrimFilterFactory" />
         <!-- The PatternReplaceFilter gives you the flexibility to use
              Java Regular expression to replace any sequence of characters
-             matching a pattern with an arbitrary replacement string, 
+             matching a pattern with an arbitrary replacement string,
              which may include back references to portions of the original
              string matched by the pattern.
-             
+
              See the Java Regular Expression documentation for more
              information on pattern and replacement string syntax.
-             
+
              http://docs.oracle.com/javase/7/docs/api/java/util/regex/package-summary.html
           -->
         <filter class="solr.PatternReplaceFilterFactory"
@@ -356,7 +356,7 @@
         />
       </analyzer>
     </fieldType>
-    
+
     <fieldtype name="phonetic" stored="false" indexed="true" class="solr.TextField" >
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -371,7 +371,7 @@
         <!--
         The DelimitedPayloadTokenFilter can put payloads on tokens... for example,
         a token of "foo|1.4"  would be indexed as "foo" with a payload of 1.4f
-        Attributes of the DelimitedPayloadTokenFilterFactory : 
+        Attributes of the DelimitedPayloadTokenFilterFactory :
          "delimiter" - a one character delimiter. Default is | (pipe)
 	 "encoder" - how to encode the following value into a playload
 	    float -> org.apache.lucene.analysis.payloads.FloatEncoder,
@@ -391,7 +391,7 @@
       </analyzer>
     </fieldType>
 
-    <!-- 
+    <!--
       Example of using PathHierarchyTokenizerFactory at index time, so
       queries for paths match documents at that path, or in descendent paths
     -->
@@ -403,7 +403,7 @@
 	<tokenizer class="solr.KeywordTokenizerFactory" />
       </analyzer>
     </fieldType>
-    <!-- 
+    <!--
       Example of using PathHierarchyTokenizerFactory at query time, so
       queries for paths match documents at that path, or in ancestor paths
     -->
@@ -417,45 +417,46 @@
     </fieldType>
 
     <!-- since fields of this type are by default not stored or indexed,
-         any data added to them will be ignored outright.  --> 
+         any data added to them will be ignored outright.  -->
     <fieldtype name="ignored" stored="false" indexed="false" multiValued="true" class="solr.StrField" />
-    
+
     <!-- **********************************************************************************-->
 	<!-- ********** Fields defined for a card                                       -->
     <!-- **********************************************************************************-->
- 
+
     <field name="PageID" type="string" indexed="true" stored="true" multiValued="false" />
     <field name="DocID" type="string" indexed="true" stored="true" multiValued="false" /> <!-- for a DLC points tot he the id of the tag, for a Curated list points tot he ID of the page. -->
-    <field name="Active" type="string" indexed="true" stored="true" default="false" />    
+    <field name="Active" type="string" indexed="true" stored="true" default="false" />
     <field name="PostDestination" type="string" indexed="true" stored="true"  />
     <field name="CardOrder" type="int" indexed="true" stored="true" multiValued="false" />
-    <field name="CardType" type="string"  indexed="true" stored="true"/> <!-- This is the type of card. Most cards will be of type content meaning it can be used for Stories or video --> 
+    <field name="CardType" type="string"  indexed="true" stored="true"/> <!-- This is the type of card. Most cards will be of type content meaning it can be used for Stories or video -->
     <field name="CardLayout" type="string"  indexed="true" stored="true"/> <!-- This will map to the template -->
-	<field name="CardFormat" type="string" indexed="true" stored="true"  /> <!-- This is the style to be applied. It is blank unless there are special formatting rules applied.--> 
-	<field name="CardColumnSpan"  type="int" indexed="true" stored="true"  />    
-	<field name="CardHeight"  type="int" indexed="true" stored="true"  />    
-	<field name="CardWidth"  type="int" indexed="true" stored="true"  />    
+	<field name="CardFormat" type="string" indexed="true" stored="true"  /> <!-- This is the style to be applied. It is blank unless there are special formatting rules applied.-->
+	<field name="CardColumnSpan"  type="int" indexed="true" stored="true"  />
+	<field name="CardHeight"  type="int" indexed="true" stored="true"  />
+	<field name="CardWidth"  type="int" indexed="true" stored="true"  />
     <field name="CardAspectRatio" type="string"  indexed="true" stored="true"/>
-            
 
-        
-    <field name="CardTitle" type="text_general" indexed="true" stored="true"/> <!-- change to lower case --> 
-    <field name="CardTitle_raw" type="string" indexed="false" stored="true"/>    
-    <field name="altTitle" type="text_general" indexed="true" stored="true" multiValued="true" /> <!-- must be text and not html --> 
+    <field name="TempalteId" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's id filed -->
+    <field name="data" type="string" multiValued="false" indexed="true" stored="true"/> <!-- LUO HUAN: Store JSON data structure for a template referenced by templateId field. -->
+
+    <field name="CardTitle" type="text_general" indexed="true" stored="true"/> <!-- change to lower case -->
+    <field name="CardTitle_raw" type="string" indexed="false" stored="true"/>
+    <field name="altTitle" type="text_general" indexed="true" stored="true" multiValued="true" /> <!-- must be text and not html -->
 	 <field name="CardSubTitle" type="text_general" indexed="true" stored="true"/>
-    <field name="CardSubTitle_raw" type="string" indexed="false" stored="true"/>    
+    <field name="CardSubTitle_raw" type="string" indexed="false" stored="true"/>
     <field name="CardBody" type="HTML_text_en_splitting" indexed="true" stored="false"/>
      <field name="CardBody_raw" type="string" indexed="false" stored="true"/>
-	<field name="Contributor"  type="text_general" indexed="true" stored="true" multiValued="true" />    
+	<field name="Contributor"  type="text_general" indexed="true" stored="true" multiValued="true" />
     <field name="VideoLocation" type="string" indexed="false" multiValued="true"  stored="true"/>
     <field name="VideoFileName" type="text_en_splitting" indexed="true" stored="false" />
     <field name="SplashImageFileName" type="text_en_splitting" indexed="true" stored="false" />
     <field name="SplashImageOriginal" type="string" indexed="false" multiValued="false"  stored="true"/>
-    <field name="SplashImageDerived" type="string" indexed="false" multiValued="true"  stored="true"/>    
-    <field name="CreatedDate" type="date" indexed="true" stored="true"/> <!-- Date first created. Also used in the ID --> 
-    <field name="UpdateDate" type="date" indexed="true" stored="true"/>  <!-- Date last modified -->   
+    <field name="SplashImageDerived" type="string" indexed="false" multiValued="true"  stored="true"/>
+    <field name="CreatedDate" type="date" indexed="true" stored="true"/> <!-- Date first created. Also used in the ID -->
+    <field name="UpdateDate" type="date" indexed="true" stored="true"/>  <!-- Date last modified -->
     <field name="PublishDate" type="date" indexed="true" stored="true"/> <!-- Date published. If a future date then it is used to embargo the content -->
-    <field name="Category" type="text_en_splitting" indexed="true" multiValued="true"  stored="true"/>    
+    <field name="Category" type="text_en_splitting" indexed="true" multiValued="true"  stored="true"/>
     <field name="Tag" type="text_en_splitting" indexed="true" multiValued="true"  stored="true"/>
 
 </schema>
