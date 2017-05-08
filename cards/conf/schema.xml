@@ -423,7 +423,7 @@
     <!-- **********************************************************************************-->
 	<!-- ********** Fields defined for a card                                       -->
     <!-- **** Version histroy ****-->
-    <!-- Add TempalteId and Data fields on May 8th 2017 -->
+    <!-- Add TempalteID and Data fields on May 8th 2017 -->
     <!-- **********************************************************************************-->
 
     <field name="PageID" type="string" indexed="true" stored="true" multiValued="false" />
@@ -439,7 +439,7 @@
 	<field name="CardWidth"  type="int" indexed="true" stored="true"  />
     <field name="CardAspectRatio" type="string"  indexed="true" stored="true"/>
 
-    <field name="TempalteId" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's id filed -->
+    <field name="TempalteID" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's id filed -->
     <field name="Data" type="string" multiValued="false" indexed="true" stored="true"/> <!-- LUO HUAN: Store JSON data structure for a template referenced by templateId field. -->
 
     <field name="CardTitle" type="text_general" indexed="true" stored="true"/> <!-- change to lower case -->
