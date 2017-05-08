@@ -516,12 +516,12 @@
 	<dynamicField name="*_d" type="double" indexed="true" stored="true"/>
 	<dynamicField name="*_p" type="location" indexed="true" stored="true"/>
 	<dynamicField name="*_c" type="currency" indexed="true" stored="true"/>
-	
+
 	<field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
 	<!-- ******************************************Templates****************************************-->
-	<!-- ********** Fields defined for a Templates    
+	<!-- ********** Fields defined for a Templates
 		v. 1.0
-		
+
 		Version History
 
 		v. 1.0 Initial setup
@@ -530,20 +530,20 @@
 	<!-- **********************************************************************************-->
 	<field name="DocID" type="string" indexed="true" stored="true" docValues="true" />
 	<field name="Active" type="string" indexed="true" stored="true" default="false" docValues="true" />
-	<field name="state" type="string" indexed="true" stored="true" docValues="true" />	
+	<field name="state" type="string" indexed="true" stored="true" docValues="true" />
 	<field name="ClientID" type="string"  multiValued="true" indexed="true" stored="true" docValues="true" />
 	<field name="TemplateType" type="string" indexed="true" stored="true" docValues="true" />
 	<field name="TemplateContent" type="string" indexed="false" stored="true" />
-	
+
 	<field name="URLSlug" type="string" indexed="true" stored="true" multiValued="true"/>
-    <field name="URLSlug_path" type="URL" indexed="true" stored="false" multiValued="true"/>	
+    <field name="URLSlug_path" type="URL" indexed="true" stored="false" multiValued="true"/>
 
 	<field name="CreatedDate" type="date" indexed="true" stored="true"/>
 	<field name="UpdateDate" type="date" indexed="true" stored="true"/>
-	<field name="Processor" type="string" indexed="true" stored="true" multiValued="false"/>	
+	<field name="Processor" type="string" indexed="true" stored="true" multiValued="false"/>
 
-	<field name="text" type="text_en" indexed="true" multiValued="true" stored="false"/>	
-	
+	<field name="text" type="text_en" indexed="true" multiValued="true" stored="false"/>
+
 
 	<copyField source="URLSlug" dest="URLSlug_path"/>
 

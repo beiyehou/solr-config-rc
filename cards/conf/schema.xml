@@ -422,6 +422,8 @@
 
     <!-- **********************************************************************************-->
 	<!-- ********** Fields defined for a card                                       -->
+    <!-- **** Version histroy ****-->
+    <!-- Add TempalteId and Data fields on May 8th 2017 -->
     <!-- **********************************************************************************-->
 
     <field name="PageID" type="string" indexed="true" stored="true" multiValued="false" />
