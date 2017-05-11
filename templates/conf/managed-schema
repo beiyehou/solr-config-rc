@@ -537,7 +537,7 @@
 	<field name="ContentType" type="string" indexed="false" stored="true" docValues="true"/><!-- template / css -->
 	<field name="Content" type="string" indexed="false" stored="true" /><!-- JSON data structure / css string -->
 
-
+	<field name="TemplateSize" type="string" indexed="true" stored="true" multiValued="true"/>
 	<field name="URLSlug" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="URLSlug_path" type="URL" indexed="true" stored="false" multiValued="true"/>
 
