@@ -536,10 +536,6 @@
 	<field name="CreatedDate" type="date" indexed="true" stored="true"/>
 	<field name="UpdateDate" type="date" indexed="true" stored="true"/>
 	<field name="Creator" type="string" indexed="true" stored="true" multiValued="false"/>
-
 	<field name="text" type="text_en" indexed="true" multiValued="true" stored="false"/>
-
-
-	<copyField source="URLSlug" dest="URLSlug_path"/>
 
 </schema>
