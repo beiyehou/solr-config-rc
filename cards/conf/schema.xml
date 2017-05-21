@@ -439,7 +439,8 @@
 	<field name="CardWidth"  type="int" indexed="true" stored="true"  />
     <field name="CardAspectRatio" type="string"  indexed="true" stored="true"/>
 
-    <field name="TempalteID" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's id filed -->
+    <field name="TemplateClientId" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's client id filed -->
+    <field name="TemplateName" type="string" indexed="true" stored="true" multiValued="false" /> <!-- LUO HUAN: Store template's name -->
     <field name="Data" type="string" multiValued="false" indexed="true" stored="true"/> <!-- LUO HUAN: Store JSON data structure for a template referenced by templateId field. -->
 
     <field name="CardTitle" type="text_general" indexed="true" stored="true"/> <!-- change to lower case -->
