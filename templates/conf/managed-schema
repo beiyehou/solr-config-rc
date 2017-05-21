@@ -531,10 +531,10 @@
 	<field name="DocID" type="string" indexed="true" stored="true" docValues="true" />
 	<field name="Active" type="string" indexed="true" stored="true" default="false" docValues="true" />
 	<field name="state" type="string" indexed="true" stored="true" docValues="true" />
-	<field name="DisplayName" type="string" indexed="false" stored="true" docValues="true"/><!-- wallpaper / feature etc. -->
+	<field name="DisplayName" type="string" indexed="false" stored="true" docValues="true"/><!-- Wall Paper / Feature etc. -->
+	<field name="TemplateName" type="string" indexed="false" stored="true" docValues="true"/><!-- wallpaper / feature etc. -->
 	<field name="ClientID" type="string"  multiValued="true" indexed="true" stored="true" docValues="true" />
 	<field name="TemplateType" type="string" indexed="true" stored="true" docValues="true" /> <!-- associated with card index's cardtype field. story / video / dlc etc. -->
-	<field name="ContentType" type="string" indexed="false" stored="true" docValues="true"/><!-- template / css -->
 	<field name="Content" type="string" indexed="false" stored="true" /><!-- JSON data structure / css string -->
 
 	<field name="TemplateSize" type="string" indexed="true" stored="true" multiValued="true"/>
