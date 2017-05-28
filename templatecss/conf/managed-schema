@@ -525,6 +525,7 @@
 		Version History
 
 		v. 1.0 Initial setup
+		v. 2.0 Add Style field.
 		***********************************************************************************-->
 	<!-- **********************************************************************************-->
 	<field name="DocID" type="string" indexed="true" stored="true" docValues="true" />
@@ -533,6 +534,7 @@
 	<field name="TemplateName" type="string" indexed="false" stored="true" docValues="true"/><!-- wallpaper / feature etc. -->
 	<field name="TemplateClientId" type="string" indexed="false" stored="true" docValues="true"/><!-- wallpaper / feature etc. -->
 	<field name="Less" type="string" indexed="false" stored="true" /><!-- JSON data structure / css string -->
+	<field name="Style" type="string" indexed="false" stored="true" />
 	<field name="CreatedDate" type="date" indexed="true" stored="true"/>
 	<field name="UpdateDate" type="date" indexed="true" stored="true"/>
 	<field name="Creator" type="string" indexed="true" stored="true" multiValued="false"/>
